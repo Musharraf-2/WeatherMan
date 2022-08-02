@@ -1,2 +1,3 @@
 require './weatherman2.rb'
-WeatherMan.start_weather_man
+wm = WeatherMan.new(ARGV[0], ARGV[1], ARGV[2])
+wm.start_weather_man
