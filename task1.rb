@@ -1,12 +1,12 @@
 # # module for weatherman task1
 module Task1
   def task_1(date, files_path)
-    calculate_highest_temp_of_year_with_day(date,files_path)
+    calculate_highest_temp_of_year_with_day(date, files_path)
     calculate_lowest_temp_of_year_with_day(date, files_path)
-    calculate_highest_humidity_of_year_with_day(date,files_path)
+    calculate_highest_humidity_of_year_with_day(date, files_path)
   end
 
-  def calculate_highest_temp_of_year_with_day(date,files_path)
+  def calculate_highest_temp_of_year_with_day(date, files_path)
     files = Dir.entries(".#{files_path}").select { |name| name.include? date.split('/')[0] }
     data = File.readlines(".#{files_path}/#{files[0]}").select { |line| line.include? ',' }.reject { |line| line.include? 'Temp' }
     highest_temp = data[0].split(',')[1].to_i
@@ -41,6 +41,7 @@ module Task1
     end
     puts "Lowest: #{lowest_temp}C on #{MONTHS_FULL_NAME_HASH[:"#{low_temp_date.split('-')[1]}"]} #{low_temp_date.split('-')[2]}"
   end
+
   def calculate_highest_humidity_of_year_with_day(date, files_path)
     files = Dir.entries(".#{files_path}").select { |name| name.include? date.split('/')[0] }
     data = File.readlines(".#{files_path}/#{files[0]}").select { |line| line.include? ',' }.reject { |line| line.include? 'Temp' }
