@@ -13,7 +13,7 @@ MONTHS_HASH = {
   :"1" => 'Jan', :"2" => 'Feb', :"3" => 'Mar',
   :"4" => 'Apr', :"5" => 'May', :"6" => 'Jun',
   :"7" => 'Jul', :"8" => 'Aug', :"9" => 'Sep',
-  :"10" => 'Oct', :"11" => 'N module for weathermanov', :"12" => 'Dec'
+  :"10" => 'Oct', :"11" => 'Nov', :"12" => 'Dec'
 }.freeze
 MONTHS_FULL_NAME_HASH = {
   :"1" => 'January', :"2" => 'Februray', :"3" => 'March',

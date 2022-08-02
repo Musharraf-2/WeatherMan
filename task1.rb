@@ -4,7 +4,7 @@ module Task1
     var = '.' + files_path
     files = Dir.entries(var)
     files = files.select { |name| name.include? date.split('/')[0] }
-    data = File.readlines("#{var}/" + files[0])
+    data = File.readlines("#{var}/#{files[0]}")
     data = data.select { |line| line.include? ',' }
     data = data.reject { |line| line.include? 'Temp' }
     highest_temp = data[0].split(',')[1].to_i
@@ -14,7 +14,7 @@ module Task1
     low_temp_date = data[0].split(',')[0]
     humidity_date = data[0].split(',')[0]
     files.each do |file_name|
-      data = File.readlines("#{var}/" + file_name)
+      data = File.readlines("#{var}/#{file_name}")
       data = data.select { |line| line.include? ',' }
       data = data.reject { |line| line.include? 'Temp' }
       data.each do |line|
@@ -33,10 +33,8 @@ module Task1
         end
       end
     end
-    puts "Highest: #{highest_temp}C on " + MONTHS_FULL_NAME_HASH[:"#{high_temp_date.split('-')[1]}"]
-    + " #{high_temp_date.split('-')[2]}"
-    puts "Lowest: #{lowest_temp}C on " + MONTHS_FULL_NAME_HASH[:"#{low_temp_date.split('-')[1]}"]
-    + " #{low_temp_date.split('-')[2]}"
-    puts "Humid: #{humidity}% on " + MONTHS_FULL_NAME_HASH[:"#{humidity_date.split('-')[1]}"] + " #{humidity_date.split('-')[2]}"
+    puts "Highest: #{highest_temp}C on #{MONTHS_FULL_NAME_HASH[:"#{high_temp_date.split('-')[1]}"]} #{high_temp_date.split('-')[2]}"
+    puts "Lowest: #{lowest_temp}C on #{MONTHS_FULL_NAME_HASH[:"#{low_temp_date.split('-')[1]}"]} #{low_temp_date.split('-')[2]}"
+    puts "Humid: #{humidity}% on #{MONTHS_FULL_NAME_HASH[:"#{humidity_date.split('-')[1]}"]} #{humidity_date.split('-')[2]}"
   end
 end
