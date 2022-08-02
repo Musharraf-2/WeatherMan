@@ -1,10 +1,8 @@
-require 'colorize'
-require_relative 'read_file'
+
 require_relative 'task3'
 require_relative 'task4'
 require_relative 'task2'
 require_relative 'task1'
-include ReadFile
 include Task3
 include Task4
 include Task2
@@ -29,7 +27,7 @@ class WeatherMan
     @files_path = files_path
   end
 
-  def start_weather_man
+  def execute_weather_man
     if ARGV[0] == '-e'
       Task1.task_1(@date, @files_path)
     elsif ARGV[0] == '-a'
@@ -38,7 +36,7 @@ class WeatherMan
       Task3.task_3(@date, @files_path)
       Task4.task_4(@date, @files_path)
     else
-      puts 'Wrong command'
+      puts 'Wrong command.'
     end
   end
 end

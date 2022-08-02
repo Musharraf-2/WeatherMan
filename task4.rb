@@ -1,3 +1,6 @@
+require 'colorize'
+require_relative 'read_file'
+include ReadFile
 # module for weatherman task4
 module Task4
   def task_4(date, files_path)

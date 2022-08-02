@@ -1,3 +1,2 @@
-require './weatherman2.rb'
-wm = WeatherMan.new(ARGV[0], ARGV[1], ARGV[2])
-wm.start_weather_man
+require './weatherman_class.rb'
+WeatherMan.new(ARGV[0], ARGV[1], ARGV[2]).execute_weather_man

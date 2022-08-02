@@ -1,3 +1,5 @@
+require_relative 'read_file'
+include ReadFile
 # module for weatherman task1
 module Task2
   def task_2(date, files_path)
