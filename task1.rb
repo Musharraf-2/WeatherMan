@@ -7,11 +7,8 @@ module Task1
   end
   def calculate_highest_temp_of_year_with_day(date,files_path)
     var = '.' + files_path
-    files = Dir.entries(var)
-    files = files.select { |name| name.include? date.split('/')[0] }
-    data = File.readlines("#{var}/#{files[0]}")
-    data = data.select { |line| line.include? ',' }
-    data = data.reject { |line| line.include? 'Temp' }
+    files = Dir.entries(var).select { |name| name.include? date.split('/')[0] }
+    data = File.readlines("#{var}/#{files[0]}").select { |line| line.include? ',' }.reject { |line| line.include? 'Temp' }
     highest_temp = data[0].split(',')[1].to_i
     high_temp_date = data[0].split(',')[0]
     files.each do |file_name|
@@ -30,11 +27,8 @@ module Task1
   end
   def calculate_lowest_temp_of_year_with_day(date, files_path)
     var = '.' + files_path
-    files = Dir.entries(var)
-    files = files.select { |name| name.include? date.split('/')[0] }
-    data = File.readlines("#{var}/#{files[0]}")
-    data = data.select { |line| line.include? ',' }
-    data = data.reject { |line| line.include? 'Temp' }
+    files = Dir.entries(var).select { |name| name.include? date.split('/')[0] }
+    data = File.readlines("#{var}/#{files[0]}").select { |line| line.include? ',' }.reject { |line| line.include? 'Temp' }
     lowest_temp = data[0].split(',')[3].to_i
     low_temp_date = data[0].split(',')[0]
     files.each do |file_name|
@@ -53,11 +47,8 @@ module Task1
   end
   def calculate_highest_humidity_of_year_with_day(date, files_path)
     var = '.' + files_path
-    files = Dir.entries(var)
-    files = files.select { |name| name.include? date.split('/')[0] }
-    data = File.readlines("#{var}/#{files[0]}")
-    data = data.select { |line| line.include? ',' }
-    data = data.reject { |line| line.include? 'Temp' }
+    files = Dir.entries(var).select { |name| name.include? date.split('/')[0] }
+    data = File.readlines("#{var}/#{files[0]}").select { |line| line.include? ',' }.reject { |line| line.include? 'Temp' }
     humidity = data[0].split(',')[7].to_i
     humidity_date = data[0].split(',')[0]
     files.each do |file_name|
