@@ -12,20 +12,18 @@ module Task1
   end
 
   def read_data(files_path, files)
-    data = File.readlines(".#{files_path}/#{files[0]}")
+    data = File.readlines(".#{files_path}/#{files}")
     data = data.select { |line| line.include? ',' }
     data.reject { |line| line.include? 'Temp' }
   end
 
   def calculate_highest_temp_of_year_with_day(date, files_path)
     files = read_files(date, files_path)
-    data = read_data(files_path, files)
+    data = read_data(files_path, files[0])
     highest_temp = data[0].split(',')[1].to_i
     high_temp_date = data[0].split(',')[0]
     files.each do |file_name|
-      data = File.readlines(".#{files_path}/#{file_name}")
-      data = data.select { |line| line.include? ',' }
-      data = data.reject { |line| line.include? 'Temp' }
+      data = read_data(files_path, file_name)
       data.each do |line|
         splitted_line = line.split(',')
         if splitted_line[1] != '' && splitted_line[1].to_i > highest_temp
@@ -41,13 +39,11 @@ module Task1
 
   def calculate_lowest_temp_of_year_with_day(date, files_path)
     files = read_files(date, files_path)
-    data = read_data(files_path, files)
+    data = read_data(files_path, files[0])
     lowest_temp = data[0].split(',')[3].to_i
     low_temp_date = data[0].split(',')[0]
     files.each do |file_name|
-      data = File.readlines(".#{files_path}/#{file_name}")
-      data = data.select { |line| line.include? ',' }
-      data = data.reject { |line| line.include? 'Temp' }
+      data = read_data(files_path, file_name)
       data.each do |line|
         splitted_line = line.split(',')
         if splitted_line[3] != '' && splitted_line[3].to_i < lowest_temp
@@ -63,13 +59,11 @@ module Task1
 
   def calculate_highest_humidity_of_year_with_day(date, files_path)
     files = read_files(date, files_path)
-    data = read_data(files_path, files)
+    data = read_data(files_path, files[0])
     humidity = data[0].split(',')[7].to_i
     humidity_date = data[0].split(',')[0]
     files.each do |file_name|
-      data = File.readlines(".#{files_path}/#{file_name}")
-      data = data.select { |line| line.include? ',' }
-      data = data.reject { |line| line.include? 'Temp' }
+      data = read_data(files_path, file_name)
       data.each do |line|
         splitted_line = line.split(',')
         if splitted_line[7] != '' && splitted_line[7].to_i > humidity
